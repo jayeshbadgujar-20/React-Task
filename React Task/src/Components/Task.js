@@ -99,8 +99,8 @@ const Task = () => {
 
   const updateAllTimes = () => {
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-    const startTime = 8; // 8:00 AM
-    const endTime = 23; // 11:00 PM
+    const startTime = 8;
+    const endTime = 23;
 
     const timeOptionsByDay = days.map(() => {
       return Array.from({ length: endTime - startTime + 1 }, (_, index) => {
@@ -150,9 +150,9 @@ const Task = () => {
       <div className="time-options">
         {timeOptionsByDay[dayIndex]?.map(({ hour, formattedHour, period, isChecked }, index) => {
           const date = new Date(currentStartDate);
-          date.setDate(date.getDate() + dayIndex); // Set the date according to the day index
+          date.setDate(date.getDate() + dayIndex);
 
-          date.setHours(hour); // Set the hour for the date
+          date.setHours(hour);
 
           const formattedTime = date.toLocaleString('en-US', {
             hour: 'numeric',
@@ -201,12 +201,12 @@ const Task = () => {
           </select>
         </div>
         <div className="working-hours">
-          {renderDaysWithTime()}  
+          {renderDaysWithTime()}
         </div>
 
       </div>
       <div className="output"> {selectedTimeSlots.length > 0 && selectedTimeSlots?.map(res => {
-        return <li  className="output-li"key={res?.id}>
+        return <li className="output-li" key={res?.id}>
           id: {res?.id} <br />
           name: {res?.name} <br />
           date: {res?.date} <br />
@@ -215,7 +215,7 @@ const Task = () => {
             .map((time, index) => (
               <span key={index}>{time} </span>
             ))}
-            {((res?.time?.split(" ")[1] || '').split(' ') || [])
+          {((res?.time?.split(" ")[1] || '').split(' ') || [])
             .filter(time => time)
             .map((time, index) => (
               <span key={index}>{time.slice(0,)} </span>
